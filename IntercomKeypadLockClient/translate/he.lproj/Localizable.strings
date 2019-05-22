@@ -1,0 +1,36 @@
+
+/*
+ Localizable.strings
+ IntercomKeypadLockClient
+ 
+ Created by my on 5/22/19.
+ Copyright © 2019 newlinks. All rights reserved.
+ */
+"enter_your_phone_number"="Enter your phone number";
+"confirm"="Confirm";
+"error"="error";
+"sms_password"="In these moments you should receive a SMS message, please insert here the password";
+"door_opened"="Openinig door";
+"gate_opened"="Openinig gate";
+"open_gate"="Opening gate";
+"cancel"="Cancel";
+"yes"="Yes";
+"no"="No";
+"ok"="Okay";
+"open_door"="פתח דלת";
+"panel_list"="רשימת פאנלים";
+"push_open_door_request"="התקבלה בקשה לפתיחת דלת";
+"send_guest_open_door_code"="שלח קוד זמני לאורח";
+"send_code"="שלח לאורח";
+"start_time"="התחלה";
+"end_time"="סיום";
+"guest_cell"="מספר הטלפון של האורח";
+"choose_panel"="בחר פאנל";
+"no_panels"="אין פאנלים משוייכים";
+"invalid_cell"="מספר הטלפון הסלולארי שהוזן אינו תקין";
+"guset_name"="שם האורח";
+"name_invalid"="השם שהוזן אינו תקין";
+"cod_sms_1_you_invited"="You invited by";
+"cod_sms_2_to_enter"="to enter ";
+"cod_sms_3_by_entering"="by entering the code:";
+

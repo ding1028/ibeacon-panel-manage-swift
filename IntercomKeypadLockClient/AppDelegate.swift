@@ -15,7 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //Keep screen on
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         // Override point for customization after application launch.
+        if(LocalData.shared.getRegistered()) {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let nav = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            
+            self.window?.rootViewController = nav
+        } else {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let nav = storyboard.instantiateViewController(withIdentifier: "RegisterViewController")
+            
+            self.window?.rootViewController = nav
+        }
+        
         return true
     }
 
