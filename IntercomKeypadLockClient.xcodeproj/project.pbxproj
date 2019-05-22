@@ -23,6 +23,7 @@
 		0F93B73B2295A4B40029FDF4 /* BeaconBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93B73A2295A4B40029FDF4 /* BeaconBroadcaster.swift */; };
 		0F93B73D2295A97C0029FDF4 /* PanelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93B73C2295A97C0029FDF4 /* PanelTableViewCell.swift */; };
 		0F93B73F2295AB2C0029FDF4 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93B73E2295AB2C0029FDF4 /* Panel.swift */; };
+		0FF93A9E2295E577006F1A0D /* SendGuestDoorCodeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF93A9D2295E577006F1A0D /* SendGuestDoorCodeModalViewController.swift */; };
 		639B2F8D0EF28A18BE1483F9 /* Pods_IntercomKeypadLockClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A811839617314214A31010 /* Pods_IntercomKeypadLockClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		0F93B73A2295A4B40029FDF4 /* BeaconBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconBroadcaster.swift; sourceTree = "<group>"; };
 		0F93B73C2295A97C0029FDF4 /* PanelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelTableViewCell.swift; sourceTree = "<group>"; };
 		0F93B73E2295AB2C0029FDF4 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		0FF93A9D2295E577006F1A0D /* SendGuestDoorCodeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendGuestDoorCodeModalViewController.swift; sourceTree = "<group>"; };
 		2E22630F7C86E8ACABF443E8 /* Pods-IntercomKeypadLockClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntercomKeypadLockClient.release.xcconfig"; path = "Target Support Files/Pods-IntercomKeypadLockClient/Pods-IntercomKeypadLockClient.release.xcconfig"; sourceTree = "<group>"; };
 		4E06D5B7087FB769728D09B3 /* Pods-IntercomKeypadLockClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntercomKeypadLockClient.debug.xcconfig"; path = "Target Support Files/Pods-IntercomKeypadLockClient/Pods-IntercomKeypadLockClient.debug.xcconfig"; sourceTree = "<group>"; };
 		97A811839617314214A31010 /* Pods_IntercomKeypadLockClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntercomKeypadLockClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 			children = (
 				0F93B72A22958A7E0029FDF4 /* MainViewController.swift */,
 				0F93B72C22958A9C0029FDF4 /* RegisterViewController.swift */,
+				0FF93A9D2295E577006F1A0D /* SendGuestDoorCodeModalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				0F93B73022958DEC0029FDF4 /* AlertHelper.swift in Sources */,
 				0F93B73122958DEC0029FDF4 /* LocalData.swift in Sources */,
 				0F93B72D22958A9C0029FDF4 /* RegisterViewController.swift in Sources */,
+				0FF93A9E2295E577006F1A0D /* SendGuestDoorCodeModalViewController.swift in Sources */,
 				0F93B6F22295854B0029FDF4 /* AppDelegate.swift in Sources */,
 				0F93B73B2295A4B40029FDF4 /* BeaconBroadcaster.swift in Sources */,
 				0F93B738229596700029FDF4 /* ApiHandler.swift in Sources */,
