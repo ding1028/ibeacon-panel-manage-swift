@@ -24,11 +24,11 @@
 "send_code"="Send to guest";
 "start_time"="Start Time";
 "end_time"="End Time";
-"guest_cell"="The guest's phone number";
+"guest_cell"="Guest Cell";
 "choose_panel"="Select a panel";
 "no_panels"="No associated panels";
 "invalid_cell"="The phone number entered is incorrect";
-"guset_name"="The guest's name";
+"guset_name"="Guest Name";
 "name_invalid"="The name entered is incorrect";
 "cod_sms_1_you_invited"="You invited by";
 "cod_sms_2_to_enter"="to enter ";

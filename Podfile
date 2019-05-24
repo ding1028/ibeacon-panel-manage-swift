@@ -5,5 +5,5 @@ target 'IntercomKeypadLockClient' do
   pod 'Localize-Swift', '~> 2.0'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
-
+  pod 'SDWebImage'
 end

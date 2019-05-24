@@ -81,4 +81,42 @@ class ApiHandler: NSObject {
                 }
         }
     }
+    
+    func addGuest(panelIx: String, userIx: String, name: String, cellular: String, authFrom: String, authTo: String, success: @escaping (Data)->(), failure: @escaping (Error)->()) {
+        let parameters = [
+            "panelIx": panelIx,
+            "userIx": userIx,
+            "name": name,
+            "cellular": cellular,
+            "authFrom" : authFrom,
+            "authTo" : authTo,
+        ]
+        let url = Config.shared.apiUrl + "users/addGuest";
+        Alamofire.request(url, method: .post, parameters: parameters)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    success(value)
+                case .failure(let error):
+                    failure(error)
+                }
+        }
+    }
+    
+    func confirmRequest(panelIx: String, userIx: String, success: @escaping (Data)->(), failure: @escaping (Error)->()) {
+        let parameters = [
+            "panelIx": panelIx,
+            "userIx": userIx,
+        ]
+        let url = Config.shared.apiUrl + "users/confirmRequest";
+        Alamofire.request(url, method: .post, parameters: parameters)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    success(value)
+                case .failure(let error):
+                    failure(error)
+                }
+        }
+    }
 }

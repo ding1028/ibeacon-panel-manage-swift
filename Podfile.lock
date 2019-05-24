@@ -1,24 +1,30 @@
 PODS:
   - Alamofire (4.8.2)
   - Localize-Swift (2.0.0)
+  - SDWebImage (5.0.3):
+    - SDWebImage/Core (= 5.0.3)
+  - SDWebImage/Core (5.0.3)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire
   - Localize-Swift (~> 2.0)
+  - SDWebImage
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Localize-Swift
+    - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
+  SDWebImage: d4f87d7d36c8a4d9f9459dc282e0caa057fdf935
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: d9f1517992d7d8156111f004307343e2dde16414
+PODFILE CHECKSUM: 8d999fef42f56ac0cc49e960dd1a3969f86fdac4
 
 COCOAPODS: 1.6.1
