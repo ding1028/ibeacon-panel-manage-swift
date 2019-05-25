@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = nav
         }
         
+        DispatchQueue.main.async {
+            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+        }
         return true
     }
 
@@ -91,6 +95,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
+    }
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != UIUserNotificationType() {
+            application.registerForRemoteNotifications()
+        }
+    }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        var token = ""
+        for i in 0..<deviceToken.count {
+            token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
+        }
+        print("push token", token)
+        LocalData.shared.setToken(token: token);
     }
 }
 

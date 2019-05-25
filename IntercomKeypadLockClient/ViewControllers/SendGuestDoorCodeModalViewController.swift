@@ -31,6 +31,8 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
     var toolBar = UIToolbar()
     var currentPicker: Int = 0;
     var selectedPanel :Panel?
+    var startTime: String?
+    var endTime: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,6 +60,10 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
         dateFormatter.dateFormat = "yyyy-MM-dd\nHH:mm:ss"
         startTimeLabel.text = dateFormatter.string(from: date)
         endTimeLabel.text = dateFormatter.string(from: futureDate)
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        startTime = dateFormatter.string(from: date)
+        endTime = dateFormatter.string(from: futureDate)
     }
     
     func loadPanels(){
@@ -66,14 +72,22 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
     }
 
     func showDatePicker(type: Int){
+        panelPicker.removeFromSuperview();
+        toolBar.removeFromSuperview();
         currentPicker = type;
         datePicker.datePickerMode = .dateAndTime;
-        datePicker.addTarget(self, action: Selector("dueDateChanged:"), for: UIControl.Event.valueChanged)
-        let pickerSize : CGSize = datePicker.sizeThatFits(.zero)
-        datePicker.frame = CGRect(x: 0.0, y: 250, width: pickerSize.width, height: 460)
+        datePicker.backgroundColor = .white;
+        datePicker.addTarget(self, action: #selector(dueDateChanged), for: UIControl.Event.valueChanged)
+          datePicker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
           self.view.addSubview(datePicker)
+        
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .blackTranslucent
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(toolBar)
     }
-    func dueDateChanged(sender:UIDatePicker){
+    
+    @objc func dueDateChanged(sender:UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd\nHH:mm:ss"
         if(currentPicker == 0) {
@@ -82,8 +96,18 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
             endTimeLabel.text = dateFormatter.string(from: sender.date)
         }
         
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if(currentPicker == 0) {
+            startTime = dateFormatter.string(from: sender.date)
+        }else {
+            endTime = dateFormatter.string(from: sender.date)
+        }
+        
     }
     func onConfirm() {
+        guard let startTime = self.startTime, let endTime = self.endTime else {
+            return;
+        }
         guard let selectedPanel = self.selectedPanel else {
             return;
         }
@@ -100,7 +124,7 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
             return;
         }
         
-        ApiHandler.shared.addGuest(panelIx: String(selectedPanel.ix), userIx: String(LocalData.shared.getUserIx()), name: txtName.text!, cellular: txtCell.text!, authFrom: startTimeLabel.text!, authTo: endTimeLabel.text!, success: { (result) in
+        ApiHandler.shared.addGuest(panelIx: String(selectedPanel.ix), userIx: String(LocalData.shared.getUserIx()), name: txtName.text!, cellular: txtCell.text!, authFrom: startTime, authTo: endTime, success: { (result) in
             print("addGuest Success")
             let text = "You invited by " + self.txtName.text! + " to enter " + selectedPanel.name! + " by entering the code.";
             self.sendSMS(message: text, phoneNumber: self.txtCell.text!);
@@ -123,6 +147,8 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
         }
     }
     @IBAction func selectPanelAction(_ sender: Any) {
+        panelPicker.removeFromSuperview();
+        toolBar.removeFromSuperview();
         panelPicker = UIPickerView.init()
         panelPicker.delegate = self
         panelPicker.backgroundColor = UIColor.white
@@ -139,16 +165,17 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
     }
     
     @objc func onDoneButtonTapped() {
-        toolBar.removeFromSuperview()
+   
         panelPicker.removeFromSuperview()
+        datePicker.removeFromSuperview()
+        toolBar.removeFromSuperview()
     }
-    
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func confirmAction(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
+        onConfirm();
+
     }
     
     @IBAction func actionStartTimeSet(_ sender: Any) {

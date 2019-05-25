@@ -33,6 +33,9 @@ class RegisterViewController: UIViewController {
     func configureUI() {
         lblTitle.text = "enter_your_phone_number".localized();
         btnConfirm.setTitle("confirm".localized(), for: .normal);
+        
+        //test
+        txtPhoneNumber.text = "0545900000"
     }
  
     func registerDevice(phoneNumber: String, fcmToken: String) {
@@ -41,8 +44,10 @@ class RegisterViewController: UIViewController {
             print("registerDevice Response:",data);
             do {
                 let json = try JSON(data: data)
+                print("registerDevice Json",json)
                 if let userIx = json["data"]["userIx"].string {
                     self.getUserDetails(userIx: userIx);
+                    LocalData.shared.setUserIx(userIx: Int(userIx) ?? 0);
                 }
             } catch {
                 print("createDevice json parse exception");
@@ -56,10 +61,10 @@ class RegisterViewController: UIViewController {
     func getUserDetails(userIx: String) {
         ApiHandler.shared.getUserDetails(userIx: userIx, success: { (response) in
             do {
-                print("getUserDetails", response);
-                let json = try JSON(data: response)
+             
+                let json = try JSON(data: response); print("getUserDetails", json);
 
-                let custIx:Int = json["data"]["custIx"].int!;
+                let custIx:Int = Int(json["data"]["custIx"].string!) ?? 0;
                 let name:String = json["data"]["name"].string!;
                 let uuid:String = json["data"]["uuid"].string!;
                 let major:String = json["data"]["major"].string!;
@@ -98,7 +103,12 @@ class RegisterViewController: UIViewController {
             LocalData.shared.setPhoneNumber(phoneNumber: phoneNumber);
             
             //api call to registerDevice
-            let fcmToken = "";
+            let fcmToken = LocalData.shared.getToken();
+            if(fcmToken == "") {
+                AlertHelper.shared.alert(title: "whoops".localized(), message: "Please use real device, Can not get push notification token.", vc: self);
+                return;
+            }
+            registerDevice(phoneNumber: phoneNumber, fcmToken: fcmToken)
         }
     }
 }

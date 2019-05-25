@@ -12,6 +12,7 @@ import CoreBluetooth
 import CoreLocation
 
 class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, CBPeripheralManagerDelegate {
+    @IBOutlet weak var lblListPanel: UILabel!
     var localBeacon: CLBeaconRegion!
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
@@ -23,6 +24,20 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         // Do any additional setup after loading the view.
         initLocalBeacon();
         initNotificationObservers();
+        loadPanels();
+        configureUI();
+        
+    }
+    
+    func configureUI() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        lblListPanel.text = "panel_list".localized()
+    }
+    
+    func loadPanels() {
+        let userIx = LocalData.shared.getUserIx();
+        getPanelList(userIx: userIx);
     }
     
 
@@ -55,13 +70,18 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     func getPanelList(userIx: Int) {
-        ApiHandler.shared.getPanelList(userIx: String(userIx), success: { (response) in
+        print("getPanelList userIx:", userIx);
+        ApiHandler.shared.getPanelList(userIx: userIx, success: { (response) in
             do {
-                print("getPanelList", response);
+                
                 let json = try JSON(data: response)
-                let data:Data = try json["data"].rawData();
+                print("getPanelList", json);
+                let data = try json["data"].rawData();
                 LocalData.shared.setPanelList(data: data);
+
+     
                 LocalData.shared.setRegistered(registered: true);
+                self.setPanelList();
                
             } catch {
                 print("getUserDetails json parse exception");
@@ -75,6 +95,8 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     func openFromApp(panel: Panel){
         let userIx = LocalData.shared.getUserIx();
         let panelIx = panel.ix;
+        //test
+        openDoorDlg(panelIx: panelIx, imageUrl: "dddd")
         
         ApiHandler.shared.openFromApp(picture: "sdfafa", userIx: String(panelIx), panelIx: String(userIx), success: { (data) in
             print("openFromApp success:", data);

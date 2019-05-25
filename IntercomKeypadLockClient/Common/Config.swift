@@ -12,6 +12,6 @@ class Config: NSObject {
     static let shared = Config()
     private override init() {
     }
-    let apiUrl="http://eapi.rozcomapp.com/"
-    //let apiUrl="http://deapi.rozcomapp.com/";
+    //let apiUrl="http://eapi.rozcomapp.com/"
+    let apiUrl="http://deapi.rozcomapp.com/";
 }

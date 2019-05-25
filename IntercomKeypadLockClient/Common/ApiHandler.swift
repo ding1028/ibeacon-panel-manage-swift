@@ -20,8 +20,10 @@ class ApiHandler: NSObject {
             "cellular": cellular,
             "os": "1"
         ]
+        print("registerDeivce parameters:", parameters);
         let url = Config.shared.apiUrl + "users/registerDevice";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        print("registerDeivce url:", url);
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil )
             .responseData { (response) in
                 switch response.result {
                     case .success(let value):
@@ -37,7 +39,7 @@ class ApiHandler: NSObject {
             "userIx": userIx
         ]
         let url = Config.shared.apiUrl + "users/getUserDetails";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in
                 switch response.result {
                 case .success(let value):
@@ -48,12 +50,12 @@ class ApiHandler: NSObject {
         }
     }
     
-    func getPanelList(userIx: String, success: @escaping (Data)->(), failure: @escaping (Error)->()) {
+    func getPanelList(userIx: Int, success: @escaping (Data)->(), failure: @escaping (Error)->()) {
         let parameters = [
             "userIx": userIx
         ]
         let url = Config.shared.apiUrl + "users/getPanelList";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in
                 switch response.result {
                 case .success(let value):
@@ -71,7 +73,7 @@ class ApiHandler: NSObject {
             "userIx": userIx
         ]
         let url = Config.shared.apiUrl + "users/openFromApp";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in
                 switch response.result {
                 case .success(let value):
@@ -92,7 +94,7 @@ class ApiHandler: NSObject {
             "authTo" : authTo,
         ]
         let url = Config.shared.apiUrl + "users/addGuest";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in
                 switch response.result {
                 case .success(let value):
@@ -109,7 +111,7 @@ class ApiHandler: NSObject {
             "userIx": userIx,
         ]
         let url = Config.shared.apiUrl + "users/confirmRequest";
-        Alamofire.request(url, method: .post, parameters: parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in
                 switch response.result {
                 case .success(let value):

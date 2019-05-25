@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class LocalData: NSObject {
     static let shared = LocalData()
     private override init() {
@@ -78,16 +78,37 @@ class LocalData: NSObject {
     }
     
     func getPanelList() -> [Panel] {
-        let gatesData = UserDefaults.standard.object(forKey: "panelList") as? NSData
-        
-        if let gatesData = gatesData {
-            let gatesArray = NSKeyedUnarchiver.unarchiveObject(with: gatesData as Data) as? [Panel]
-            
-            if let gatesArray = gatesArray {
-                return gatesArray;
+        do {
+            guard let gatesData = UserDefaults.standard.object(forKey: "panelList") as? Data else {
+                return [];
             }
-            
+
+        var panelArrayList :[Panel] = [];
+        let json = try JSON(data: gatesData );
+        let jsonArr:[JSON] = json.arrayValue;
+        
+        for obj in jsonArr {
+            let panel = Panel();
+            panel.ix = Int(obj["ix"].string ?? "") ?? 0;
+            panel.name = obj["name"].string;
+            panel.custIx  = Int(obj["custIx"].string ?? "") ?? 0;
+            panel.siteIx = Int(obj["siteIx"].string ?? "") ?? 0;
+            panel.created = obj["created"].string;
+            panel.code = obj["code"].string;
+            panelArrayList.append(panel)
         }
-        return [];
+        return panelArrayList;
+        } catch {
+            return [];
+        }
+    }
+    
+    func setToken(token: String) {
+        UserDefaults.standard.set(token, forKey: "token");
+    }
+    
+    func getToken() -> String {
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return "" };
+        return token;
     }
 }

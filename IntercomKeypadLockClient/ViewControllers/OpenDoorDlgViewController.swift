@@ -26,7 +26,7 @@ class OpenDoorDlgViewController: UIViewController {
     
     func configureUI() {
         btnCancel.setTitle("cancel".localized(), for: .normal)
-        btnOpen.setTitle("open_door", for: .normal)
+        btnOpen.setTitle("open_door".localized(), for: .normal)
         lblTitle.text="push_open_door_request".localized()
         
         doorImage.sd_setImage(with: URL(string: imageUrl))
