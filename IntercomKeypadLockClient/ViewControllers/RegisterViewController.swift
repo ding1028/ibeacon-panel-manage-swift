@@ -34,8 +34,6 @@ class RegisterViewController: UIViewController {
         lblTitle.text = "enter_your_phone_number".localized();
         btnConfirm.setTitle("confirm".localized(), for: .normal);
         
-        //test
-        txtPhoneNumber.text = "0545900000"
     }
  
     func registerDevice(phoneNumber: String, fcmToken: String) {

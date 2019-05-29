@@ -6,4 +6,5 @@ target 'IntercomKeypadLockClient' do
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SDWebImage'
+  pod 'Toast-Swift', '~> 5.0.0'
 end

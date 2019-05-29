@@ -54,7 +54,7 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
     func setTimes(){
         let timeStamp = NSDate().timeIntervalSince1970;
         let date = Date(timeIntervalSince1970: timeStamp)
-        let futureDate = Date(timeIntervalSince1970: timeStamp + 1000*60*60)
+        let futureDate = Date(timeIntervalSince1970: timeStamp + 60*60)
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy-MM-dd\nHH:mm:ss"

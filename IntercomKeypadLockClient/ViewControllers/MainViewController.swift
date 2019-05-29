@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import CoreBluetooth
 import CoreLocation
+import Toast_Swift
 
 class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, CBPeripheralManagerDelegate {
     @IBOutlet weak var lblListPanel: UILabel!
@@ -78,8 +79,6 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 print("getPanelList", json);
                 let data = try json["data"].rawData();
                 LocalData.shared.setPanelList(data: data);
-
-     
                 LocalData.shared.setRegistered(registered: true);
                 self.setPanelList();
                
@@ -96,10 +95,11 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         let userIx = LocalData.shared.getUserIx();
         let panelIx = panel.ix;
         //test
-        openDoorDlg(panelIx: panelIx, imageUrl: "dddd")
+       // openDoorDlg(panelIx: panelIx, imageUrl: "dddd")
         
         ApiHandler.shared.openFromApp(picture: "sdfafa", userIx: String(panelIx), panelIx: String(userIx), success: { (data) in
             print("openFromApp success:", data);
+            self.view.makeToast("door_opened".localized())
             
         }) { (error) in
             print("openFromApp error:", error);

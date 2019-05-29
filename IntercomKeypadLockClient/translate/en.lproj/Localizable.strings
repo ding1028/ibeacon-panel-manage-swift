@@ -10,8 +10,8 @@
 "confirm"="Confirm";
 "error"="error";
 "sms_password"="In these moments you should receive a SMS message, please insert here the password";
-"door_opened"="Openinig door";
-"gate_opened"="Openinig gate";
+"door_opened"="Opening door";
+"gate_opened"="Opening gate";
 "open_gate"="Opening gate";
 "cancel"="Cancel";
 "yes"="Yes";
