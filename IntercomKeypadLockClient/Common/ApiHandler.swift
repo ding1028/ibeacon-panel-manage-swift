@@ -72,6 +72,7 @@ class ApiHandler: NSObject {
             "panelIx": panelIx,
             "userIx": userIx
         ]
+        print("OpenFromApp", parameters);
         let url = Config.shared.apiUrl + "users/openFromApp";
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseData { (response) in

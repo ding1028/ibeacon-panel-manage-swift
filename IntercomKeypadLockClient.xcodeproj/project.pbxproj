@@ -651,7 +651,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.smartentry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -671,7 +671,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.smartentry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -690,7 +690,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.IntercomKeypadLockClient.IntercomKeypadLockClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntercomKeypadLockClient.app/IntercomKeypadLockClient";
 			};
@@ -710,7 +710,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.IntercomKeypadLockClient.IntercomKeypadLockClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntercomKeypadLockClient.app/IntercomKeypadLockClient";
 			};
@@ -729,7 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.IntercomKeypadLockClient.IntercomKeypadLockClientUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = IntercomKeypadLockClient;
 			};
@@ -748,7 +748,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.newlinks.IntercomKeypadLockClient.IntercomKeypadLockClientUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = IntercomKeypadLockClient;
 			};

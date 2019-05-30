@@ -82,9 +82,13 @@ class RegisterViewController: UIViewController {
  
         }, failure: { (error) in
              print("getUserDetails api fail", error);
+            self.showAlert();
         })
     }
     
+    func showAlert(){
+        AlertHelper.shared.alert(title: "whoops".localized(), message: "no_user".localized(), vc: self  )
+    }
     func gotoMainController() {
         //broadcast
         BeaconBroadcaster.shared.broadcast();

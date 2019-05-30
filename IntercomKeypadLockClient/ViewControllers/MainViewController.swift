@@ -25,8 +25,12 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         // Do any additional setup after loading the view.
         initLocalBeacon();
         initNotificationObservers();
-        loadPanels();
+
         configureUI();
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.loadPanels()
+        }
+   
         
     }
     
@@ -37,6 +41,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     func loadPanels() {
+        
         let userIx = LocalData.shared.getUserIx();
         getPanelList(userIx: userIx);
     }
@@ -96,9 +101,18 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         let panelIx = panel.ix;
         //test
        // openDoorDlg(panelIx: panelIx, imageUrl: "dddd")
+        print("openFromApp: ",panel.name ?? "")
         
-        ApiHandler.shared.openFromApp(picture: "sdfafa", userIx: String(panelIx), panelIx: String(userIx), success: { (data) in
-            print("openFromApp success:", data);
+        ApiHandler.shared.openFromApp(picture: "sdfafa", userIx: String(userIx), panelIx: String(panelIx), success: { (data) in
+            do {
+                
+                let json = try JSON(data: data)
+                print("openFromApp success", json);
+               
+                
+            } catch {
+                print("getUserDetails json parse exception");
+            }
             self.view.makeToast("door_opened".localized())
             
         }) { (error) in

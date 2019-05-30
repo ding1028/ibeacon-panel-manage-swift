@@ -38,6 +38,17 @@ class SendGuestDoorCodeModalViewController: UIViewController, UIPickerViewDelega
 
         // Do any additional setup after loading the view.
         configureUI();
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     func configureUI(){
         lblStartTime.text = "start_time".localized();
