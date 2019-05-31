@@ -18,6 +18,7 @@
 "yes"="Yes";
 "no"="No";
 "ok"="Okay";
+"guest_name"="Guest Name";
 "open_door"="Open door";
 "panel_list"="List of Panels";
 "push_open_door_request"="A door opening request has been received";

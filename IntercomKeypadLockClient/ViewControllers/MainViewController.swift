@@ -14,6 +14,7 @@ import Toast_Swift
 
 class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, CBPeripheralManagerDelegate {
     @IBOutlet weak var lblListPanel: UILabel!
+    @IBOutlet weak var lblSendRequestBtn: UILabel!
     var localBeacon: CLBeaconRegion!
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
@@ -38,6 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         tableView.delegate = self
         tableView.dataSource = self
         lblListPanel.text = "panel_list".localized()
+        lblSendRequestBtn.text = "send_guest_open_door_code".localized()
     }
     
     func loadPanels() {
